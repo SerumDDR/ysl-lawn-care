@@ -1,0 +1,5 @@
+http://www.exampledomain.com/index.html
+http://www.exampledomain.com/about-us.html
+http://www.exampledomain.com/gallery.html
+http://www.exampledomain.com/services.html
+http://www.exampledomain.com/contact-us.html
