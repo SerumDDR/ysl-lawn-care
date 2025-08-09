@@ -7,12 +7,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 app.post('/contact-form', (req, res) => {
-    const { fName, lName, email, phone, method, time, interest, reference, questions } = req.body;
+    const { fName, lName, email, phone, method, time, interest, reference, questions, website } = req.body;
+
+    // Honeypot spam check
+    if (website) {
+        return res.status(400).send('Spam detected.');
+    }
 
     // Validate the data
     if (!fName || !lName || !email || !phone) {
-        res.status(400).send('Please fill in all required fields.');
-        return;
+        return res.status(400).send('Please fill in all required fields.');
     }
 
     // Create the email message
@@ -66,4 +70,5 @@ app.post('/contact-form', (req, res) => {
         res.send('Thank you for your submission! We will get back to you soon.');
     });
 });
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+app.listen(port, () => console.log(`Server listening on port ${port}`));␍␊
+
