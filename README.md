@@ -33,7 +33,7 @@ ysl-lawn-care/
 •	Hours of operation, embedded Google Maps, social media links
 ⚙️ Setup Instructions
 1.	Clone the repository: git clone https://github.com/SerumDDR/ysl-lawn-care.git
-2.	Navigate to project: cd YSL-Lawn-Care-LLC
+2.	Navigate to project: cd ysl-lawn-care
 3.	Install dependencies: npm install
 4.	Create a .env file with SMTP_USER, SMTP_PASS, NOTIFY_EMAIL
 5.	Start server: node server/server.js
