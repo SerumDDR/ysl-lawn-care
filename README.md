@@ -17,12 +17,11 @@ ysl-lawn-care/
 │   ├── scripts/
 │   └── *.html
 ├── server/
-│   ├── server.js
-│   └── routes/
-│       └── formRoutes.js
+│   └── server.js
 ├── .env.example
 ├── .gitignore
 ├── README.md
+├── package-lock.json
 └── package.json
 📬 Features
 •	Fully responsive layout for mobile, tablet, and desktop
@@ -36,7 +35,7 @@ ysl-lawn-care/
 2.	Navigate to project: cd ysl-lawn-care
 3.	Install dependencies: npm install
 4.	Create a .env file with SMTP_USER, SMTP_PASS, NOTIFY_EMAIL
-5.	Start server: node server/server.js
+5.      Start server: npm start
 6.	Visit site: http://localhost:3000
 ✅ To Do / Coming Soon
 •	Connect to database for persistent form storage (MongoDB or MySQL)
