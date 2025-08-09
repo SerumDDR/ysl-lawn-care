@@ -1,5 +1,5 @@
 # ysl-lawn-care
-YSL Lawn Care LLC – Professional Website
+YSL Lawn Care – Website
 Responsive business website for YSL Lawn Care LLC, featuring a modern front-end and a Node.js + Express backend to handle lead capture via contact forms. Designed with accessibility, scalability, and future deployment in mind.
 🚀 Overview
 This project is a full-featured small business site built for a Colorado-based lawn care company. It includes a complete front-end layout and a secure contact form backend using Node.js, Express, and Nodemailer. The website is built to scale, with modular HTML/CSS structure, backend email routing, and accessibility enhancements following WCAG 2.1 and Google Web Vitals.
@@ -32,7 +32,7 @@ ysl-lawn-care/
 •	SEO friendly with sitemap.txt, robots.txt, meta descriptions
 •	Hours of operation, embedded Google Maps, social media links
 ⚙️ Setup Instructions
-1.	Clone the repository: git clone https://github.com/SerumDDR/YSL-Lawn-Care-LLC.git
+1.	Clone the repository: git clone https://github.com/SerumDDR/ysl-lawn-care.git
 2.	Navigate to project: cd YSL-Lawn-Care-LLC
 3.	Install dependencies: npm install
 4.	Create a .env file with SMTP_USER, SMTP_PASS, NOTIFY_EMAIL
