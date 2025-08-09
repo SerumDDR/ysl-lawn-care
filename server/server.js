@@ -53,7 +53,7 @@ app.post('/contact-form', (req, res) => {
     // Setup email data with unicode symbols
     let mailOptions = {
         from: `"YSL Lawn Care Contact Form" <${process.env.SMTP_USER}>`,
-        to: process.env.MAIL_TO,
+        to: process.env.NOTIFY_EMAIL,
         subject: 'Contact Form Submission from YSL Lawn Care Website',
         html: output,
     };
@@ -71,4 +71,5 @@ app.post('/contact-form', (req, res) => {
     });
 });
 app.listen(port, () => console.log(`Server listening on port ${port}`));␍␊
+
 
