@@ -1,11 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
+const path = require('path');
 const app = express();
 const port = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 app.post('/contact-form', (req, res) => {
     const { fName, lName, email, phone, method, time, interest, reference, questions, website } = req.body;
 
@@ -68,8 +69,6 @@ app.post('/contact-form', (req, res) => {
         console.log('Message sent: %s', info.messageId);
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
         res.send('Thank you for your submission! We will get back to you soon.');
-    });
 });
-app.listen(port, () => console.log(`Server listening on port ${port}`));␍␊
-
+app.listen(port, () => console.log(`Server listening on port ${port}`));
 
