@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var contactForm = document.querySelector('form.form-grid');
     if (contactForm) {
+        var backend = window.BACKEND_URL || '';
+        var path = '/contact-form';
+        contactForm.action = backend ? backend.replace(/\/$/, '') + path : path;
+
         contactForm.addEventListener('submit', function(event) {
             var missing = [];
             if (!document.getElementById('fName').value.trim()) { missing.push('First Name'); }
@@ -117,4 +121,5 @@ function pic9() {
     figElement.style.display = "block";
     figCap.textContent = "Halloween Dark";
 }
+
 
