@@ -28,6 +28,22 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuIcon) {
         menuIcon.addEventListener('click', hamburger);
     }
+
+    var contactForm = document.querySelector('form.form-grid');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            var missing = [];
+            if (!document.getElementById('fName').value.trim()) { missing.push('First Name'); }
+            if (!document.getElementById('lName').value.trim()) { missing.push('Last Name'); }
+            if (!document.getElementById('email').value.trim()) { missing.push('Email'); }
+            if (!document.getElementById('phone').value.trim()) { missing.push('Phone'); }
+
+            if (missing.length > 0) {
+                event.preventDefault();
+                alert('Please fill in the following fields: ' + missing.join(', ') + '.');
+            }
+        });
+    }
 });
 
 //Function to display the first picture
@@ -101,3 +117,4 @@ function pic9() {
     figElement.style.display = "block";
     figCap.textContent = "Halloween Dark";
 }
+
