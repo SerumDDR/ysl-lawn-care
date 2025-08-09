@@ -61,7 +61,7 @@
 			<div id="contact">
 		
 				<h2>Contact today to get an estimate!</h2>
-				<h4 class="mobile tel-link">Call Us: <a href="tele:+17208084164">(720)808-4164</a></h4>
+				<h4 class="mobile tel-link">Call Us: <a href="tel:+17208084164">(720)808-4164</a></h4>
 				<h4 class="tablet-desktop tel-num">Call Us: (720)808-4164</h4>
 				<h4>Email us: <a href=“mailto:ysllawncare@gmail.com” class=".contact-email-link">YSLLawnCare@gmail.com</a></h4>
 				<h4>Visit us at: 8143 Table Mesa Way, Colorado Springs, CO 80919</h4>
@@ -100,8 +100,9 @@
                 
                 <h2>Complete this form below and we'll get back to you as soon as possible.</h2>
                 
-                <form class="form-grid" action="http://localhost:3000/contact-form" method="post"><!-- Start Form -->
-                
+               <form class="form-grid" action="http://localhost:3000/contact-form" method="post"><!-- Start Form -->
+                    <input type="text" id="website" name="website" style="display:none">
+
                     <fieldset>
                         <legend>Customer Information</legend>
                         <label for="fName">First Name:</label>
@@ -168,8 +169,8 @@
 		<footer>
 		
 			<div class="footer-contact">
-				<p><a href="tele:+17208084164">720-808-4164</a><p>
-				<p><a href="mailto:ysllawncare@gmail">ysllawncare@gmail.com</a></p>
+				<p><a href="tel:+17208084164">720-808-4164</a><p>
+				<p><a href="mailto:ysllawncare@gmail.com">ysllawncare@gmail.com</a></p>
 			</div>
 
 			<div class="social">
@@ -184,5 +185,6 @@
 	<script src="scripts/script.js"></script>
 
 </body>
+
 
 </html>	
