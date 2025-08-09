@@ -100,7 +100,7 @@
                 
                 <h2>Complete this form below and we'll get back to you as soon as possible.</h2>
                 
-               <form class="form-grid" action="http://localhost:3000/contact-form" method="post"><!-- Start Form -->
+               <form class="form-grid" action="/contact-form" method="post"><!-- Start Form -->
                     <input type="text" id="website" name="website" style="display:none">
 
                     <fieldset>
@@ -182,9 +182,18 @@
 		
 	</div>
 
-	<script src="scripts/script.js"></script>
+        <script>
+            // Set window.BACKEND_URL to override API base in different environments
+            window.BACKEND_URL = window.BACKEND_URL || '';
+        </script>
+        <script src="scripts/script.js"></script>        <script>
+            // Set window.BACKEND_URL to override API base in different environments
+            window.BACKEND_URL = window.BACKEND_URL || '';
+        </script>
+        <script src="scripts/script.js"></script>
 
 </body>
 
 
 </html>	
+
