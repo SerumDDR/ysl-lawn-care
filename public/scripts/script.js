@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // ERROR: Shows the message returned by the Java Controller or a network error
                 alert('Submission failed: ' + error.message);
                 console.error('Submission failed:', error);
-
+            });
         });
     }
 });
