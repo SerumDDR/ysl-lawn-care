@@ -106,7 +106,7 @@ function pic1() {
 
 //Function to display second image
 function pic2() {
-	imgSource.src = "images/after-wavy-yard-design.jpeg"
+	imgSource.src = "images/after-wavy-yard-design.jpeg";
 	imgSource.alt = "mowed grass wavy design";
     figElement.style.display = "block";
     figCap.textContent = "Wavy Design";
@@ -114,7 +114,7 @@ function pic2() {
 
 //Function to display third image
 function pic3() {
-	imgSource.src = "images/after-trimmed-front-yard.jpeg"
+	imgSource.src = "images/after-trimmed-front-yard.jpeg";
 	imgSource.alt = "mowed grass trimmed walkway";
     figElement.style.display = "block";
     figCap.textContent = "Walkway Installation";
@@ -130,7 +130,7 @@ function pic4() {
 
 //Function to display fifth image
 function pic5() {
-	imgSource.src = "images/after-ac-side-house.jpeg"
+	imgSource.src = "images/after-ac-side-house.jpeg";
 	imgSource.alt = "after image of complex edge and trim";
     figElement.style.display = "block";
     figCap.textContent = "Custom Special";
@@ -138,7 +138,7 @@ function pic5() {
 
 //Function to display sixth image
 function pic6() {
-	imgSource.src = "images/striped-back-yard.jpeg"
+	imgSource.src = "images/striped-back-yard.jpeg";
 	imgSource.alt = "Mowed yard with stripe design";
     figElement.style.display = "block";
     figCap.textContent = "Fall Special";
@@ -154,7 +154,7 @@ function pic7() {
 
 //Function to display eighth image
 function pic8() {
-	imgSource.src = "images/purple-blue-halloween-decor.png"
+	imgSource.src = "images/purple-blue-halloween-decor.png";
 	imgSource.alt = "purple and blue halloween lights and other decorations";
     figElement.style.display = "block";
     figCap.textContent = "Halloween Light";
@@ -162,7 +162,7 @@ function pic8() {
 
 //Function to display ninth image
 function pic9() {
-	imgSource.src = "images/halloween-decor-orange-lights.jpg"
+	imgSource.src = "images/halloween-decor-orange-lights.jpg";
 	imgSource.alt = "light of orange halloween and other decorations";
     figElement.style.display = "block";
     figCap.textContent = "Halloween Dark";
