@@ -4,7 +4,7 @@
 	Date: 11/24/2024
 */
 
-window.BACKEND_URL = "https://ysl-lawn-care-api-java.onrender.com/api/contact-form";
+const API_URL = "https://ysl-lawn-care-api-java.onrender.com/api/contact-form";
 
 //Global variables
 var figElement = document.getElementById("placeholder");
@@ -31,10 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
         menuIcon.addEventListener('click', hamburger);
     }
 
-    var contactForm = document.querySelector('form.form-grid');
+    var contactForm = document.getElementById('contactForm');
     if (contactForm) {
 
+        // Event listener handles the submission using fetch
         contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // --- 1. Client-Side Validation (Fast Check) ---
             var missing = [];
             if (!document.getElementById('fName').value.trim()) { missing.push('First Name'); }
             if (!document.getElementById('lName').value.trim()) { missing.push('Last Name'); }
@@ -45,6 +49,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.preventDefault();
                 alert('Please fill in the following fields: ' + missing.join(', ') + '.');
             }
+
+            // Gather Data and Convert to JSON
+            var formData = new FormData(contactForm);
+            var data = {};
+
+            // Map form data fields (names like "fName") to a JavaScript object for ContactForm.java DTO
+            formData.forEach((value, key) => {
+                if (key.endsWith('[]')) {
+                    key = key.slice(0, -2);
+                    data[key] = data[key] || [];
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            // Send the POST Request to the Java API
+            fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' // Crucial for Java API (it expects JSON)
+                },
+                body: JSON.stringify(data) // Convert the data object into a JSON string
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // Throw an error if the status is 400 (Bad Request) or 500 (Server Error)
+                    return response.text().then(text => { throw new Error(text) });
+                }
+                return response.text();
+            })
+            .then(responseText => {
+                // SUCCESS: Shows the message returned by the Java Controller (e.g., "Thank you...")
+                alert(responseText);
+                contactForm.reset(); // Clear the form on success
+            })
+            .catch(error => {
+                // ERROR: Shows the message returned by the Java Controller or a network error
+                alert('Submission failed: ' + error.message);
+                console.error('Submission failed:', error);
+
         });
     }
 });
