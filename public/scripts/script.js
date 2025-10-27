@@ -4,7 +4,7 @@
 	Date: 11/24/2024
 */
 
-window.BACKEND_URL = window.BACKEND_URL = "https://ysl-lawn-care-api-java.onrender.com/api/contact-form";
+window.BACKEND_URL = "https://ysl-lawn-care-api-java.onrender.com/api/contact-form";
 
 //Global variables
 var figElement = document.getElementById("placeholder");
@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var contactForm = document.querySelector('form.form-grid');
     if (contactForm) {
-        contactForm.action = window.BACKEND_URL; // Set the form action directly to the full URL.
 
         contactForm.addEventListener('submit', function(event) {
             var missing = [];
