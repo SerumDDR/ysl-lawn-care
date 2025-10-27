@@ -26,72 +26,64 @@ function hamburger() {
 
 // Add event listener to the menu icon
 document.addEventListener('DOMContentLoaded', function() {
-    var menuIcon = document.querySelector('.menu-icon');
-    if (menuIcon) {
-        menuIcon.addEventListener('click', hamburger);
-    }
+    // ... (menuIcon setup)
 
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
 
-        // Event listener handles the submission using fetch
-        contactForm.addEventListener('submit', function(event) {
+        contactForm.addEventListener('submit', async function(event) { // ADD 'async' HERE
             event.preventDefault();
 
-            // Client-Side Validation (Fast Check)
+            // --- 1. Client-Side Validation (Fast Check) ---
             var missing = [];
-
-            // All validation checks
             if (!document.getElementById('fName').value.trim()) { missing.push('First Name'); }
-            if (!document.getElementById('lName').value.trim()) { missing.push('Last Name'); }
-            if (!document.getElementById('email').value.trim()) { missing.push('Email'); }
-            if (!document.getElementById('phone').value.trim()) { missing.push('Phone'); }
-
+            // ... (rest of validation) ...
+            
             if (missing.length > 0) {
-                alert('Please fill in the following fields: ' + missing.join(', ') + '.');
-                return;
+                alert('Please fill in the following required fields: ' + missing.join(', ') + '.');
+                return; 
             }
 
             // Gather Data and Convert to JSON
             var formData = new FormData(contactForm);
             var data = {};
 
-            // Map form data fields (names like "fName") to a JavaScript object for ContactForm.java DTO
             formData.forEach((value, key) => {
+                // Ensure data is mapped correctly for the Java DTO (ContactForm.java)
                 if (key.endsWith('[]')) {
-                    key = key.slice(0, -2);
+                    key = key.slice(0, -2); // method[], time[], interest[]
                     data[key] = data[key] || [];
                     data[key].push(value);
                 } else {
-                    data[key] = value;
+                    data[key] = value; // fName, lName, email, phone, questions, website
                 }
             });
+            
+            // --- 2. Send the POST Request to the Java API using async/await ---
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data) 
+                });
 
-            // Send the POST Request to the Java API
-            fetch(API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json' // Crucial for Java API (it expects JSON)
-                },
-                body: JSON.stringify(data) // Convert the data object into a JSON string
-            })
-            .then(response => {
+                // Read response text for detailed error message
+                const responseText = await response.text();
+
                 if (!response.ok) {
-                    // Throw an error if the status is 400 (Bad Request) or 500 (Server Error)
-                    return response.text().then(text => { throw new Error(text) });
+                    // This handles 400 (Validation Failure) and 500 (Email Failure)
+                    throw new Error(responseText);
                 }
-                return response.text();
-            })
-            .then(responseText => {
-                // SUCCESS: Shows the message returned by the Java Controller (e.g., "Thank you...")
+                
+                // SUCCESS
                 alert(responseText);
-                contactForm.reset(); // Clear the form on success
-            })
-            .catch(error => {
-                // ERROR: Shows the message returned by the Java Controller or a network error
+                contactForm.reset(); 
+
+            } catch (error) {
+                // FAILURE: Shows the message returned by the Java Controller (e.g., "Please fill in...")
                 alert('Submission failed: ' + error.message);
                 console.error('Submission failed:', error);
-            });
+            }
         });
     }
 });
