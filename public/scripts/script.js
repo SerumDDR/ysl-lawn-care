@@ -1,8 +1,10 @@
 /*
-	Student Name: Donnie Ranjel
+	Name: Donnie Ranjel
 	File Name: script.js
 	Date: 11/24/2024
 */
+
+window.BACKEND_URL = "https://ysl-lawn-care-api-java.onrender.com/api";
 
 //Global variables
 var figElement = document.getElementById("placeholder");
