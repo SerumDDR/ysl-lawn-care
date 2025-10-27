@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (missing.length > 0) {
                 event.preventDefault();
                 alert('Please fill in the following fields: ' + missing.join(', ') + '.');
+                return;
             }
 
             // Gather Data and Convert to JSON
