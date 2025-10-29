@@ -36,7 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // --- 1. Client-Side Validation (Fast Check) ---
             var missing = [];
+
             if (!document.getElementById('fName').value.trim()) { missing.push('First Name'); }
+            if (!document.getElementById('lName').value.trim()) { missing.push('Last Name'); }
+            if (!document.getElementById('email').value.trim()) { missing.push('Email'); }
+            if (!document.getElementById('phone').value.trim()) { missing.push('Phone'); }
+            
             // ... (rest of validation) ...
             
             if (missing.length > 0) {
